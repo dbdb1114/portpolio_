@@ -89,7 +89,7 @@ export function AboutSection() {
           className="w-80 h-80 rounded-2xl shadow-lg overflow-hidden"
         >
           <img
-            src="/my_image.png"
+            src="https://korea-history-test.s3.ap-northeast-2.amazonaws.com/portpolio/my_image.png"
             alt="유정현 프로필 사진"
             className="w-full h-full object-cover"
           />

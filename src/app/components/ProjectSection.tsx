@@ -13,9 +13,9 @@ const mainProjects = [
     role: "웹 개발",
     team: "2명",
     images: [
-      "/kht1.png",
-      "/kht2.png",
-      "/kht3.png"
+      "https://korea-history-test.s3.ap-northeast-2.amazonaws.com/portpolio/kht1.png",
+      "https://korea-history-test.s3.ap-northeast-2.amazonaws.com/portpolio/kht2.png",
+      "https://korea-history-test.s3.ap-northeast-2.amazonaws.com/portpolio/kht3.png"
     ],
     responsibilities: {
       frontend: [
@@ -37,8 +37,8 @@ const mainProjects = [
     role: "웹 개발",
     team: "3명",
     images: [
-      "zeta1.png",
-      "zeta2.png"
+      "https://korea-history-test.s3.ap-northeast-2.amazonaws.com/portpolio/zeta1.png",
+      "https://korea-history-test.s3.ap-northeast-2.amazonaws.com/portpolio/zeta2.png"
     ],
     responsibilities: {
       frontend: [
@@ -64,7 +64,7 @@ const mainProjects = [
     role: "웹 개발자 인턴",
     team: "1명",
     images: [
-      "soft1.png"
+      "https://korea-history-test.s3.ap-northeast-2.amazonaws.com/portpolio/soft1.png"
     ],
     responsibilities: {
       frontend: [
@@ -89,8 +89,8 @@ const mainProjects = [
     role: "백엔드/프론트엔드(풀스택)",
     team: "2명",
     images: [
-      "fems.png",
-      "fems1.png"
+      "https://korea-history-test.s3.ap-northeast-2.amazonaws.com/portpolio/fems.png",
+      "https://korea-history-test.s3.ap-northeast-2.amazonaws.com/portpolio/fems1.png"
     ],
     responsibilities: {
       frontend: [
@@ -117,7 +117,7 @@ const subProjects = [
     role: "백엔드 개발 (팀 4명)",
     team: "4명",
     images: [
-      "goohae.png"
+      "https://korea-history-test.s3.ap-northeast-2.amazonaws.com/portpolio/goohae.png"
     ],
     responsibilities: {
       frontend: [
