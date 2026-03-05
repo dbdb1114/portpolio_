@@ -16,5 +16,8 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  base: '/portpolio/',
+  base: '/portpolio_/',
+  build: {
+    outDir: 'docs',
+  },
 })
