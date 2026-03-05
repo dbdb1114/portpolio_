@@ -5,7 +5,7 @@ interface NavigationProps {
   onNavigate: (index: number) => void;
 }
 
-const sections = ["About", "Skills", "Experience", "Project", "Education", "Contact"];
+const sections = ["About", "Project"];
 
 export function Navigation({ currentSection, onNavigate }: NavigationProps) {
   return (

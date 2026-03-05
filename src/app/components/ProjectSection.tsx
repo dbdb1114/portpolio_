@@ -7,9 +7,9 @@ const mainProjects = [
   {
     title: "한국사 능력 검정 시험 학습 서비스",
     category: "Main Project",
-    description: "기출문제 유형 선택부터 문제 풀이, 관리자 페이지까지 전체 사용자 플로우를 구현한 학습 서비스입니다.",
+    description: "(배포 예정) 기출문제 유형 선택부터 문제 풀이, 관리자 페이지까지 전체 사용자 플로우를 구현한 학습 서비스입니다.",
     tech: ["React", "Next.js", "TanStack Query", "Spring Boot", "MySQL"],
-    period: "2024.01 - 2024.06",
+    period: "2025.11 - 2025.12",
     role: "웹 개발",
     team: "2명",
     images: [
@@ -29,7 +29,7 @@ const mainProjects = [
     link: "https://kht-admin-zp4y.vercel.app/"
   },
   {
-    title: "공공기관 공간·데이터 관리 시스템",
+    title: "경상북도 인구산업 통합 플랫폼",
     category: "Main Project",
     description: "공공기관의 토지 관리와 데이터 호출 통계를 제공하는 관리 시스템입니다. 권한별 데이터 마스킹과 엑셀 처리 기능을 구현했습니다.",
     tech: ["Vanilla JS", "Java", "Spring", "MyBatis", "PostgreSQL"],
@@ -61,7 +61,7 @@ const mainProjects = [
     description: "콜센터의 상담업무를 돕기 위한 웹 기반 시스템 UI/UX 개선 및 유지보수",
     tech: ["Vanilla JS", "Spring", "jQuery", "Oracle", "MariaDB"],
     period: "2023.09 - 2023.11",
-    role: "웹 개발자 인턴",
+    role: "풀스택 개발자",
     team: "1명",
     images: [
       "https://korea-history-test.s3.ap-northeast-2.amazonaws.com/portpolio/soft1.png"
@@ -83,7 +83,7 @@ const mainProjects = [
   {
     title: "FEMS 공장 데이터 시각화 웹 시스템",
     category: "Main Project",
-    description: "회사 내 직원, 장비, 공지사항을 관리하고, 실시간 에너지 사용량 데이터를 시각화하는 시스템",
+    description: "공장내 입주 회사별 직원, 장비, 공지사항을 관리하고, 실시간 에너지 사용량 데이터를 시각화하는 시스템",
     tech: ["Vanilla JS", "Chart.js", "Thymeleaf", "Java", "Spring Boot"],
     period: "2023.04 - 2023.06",
     role: "백엔드/프론트엔드(풀스택)",
@@ -109,7 +109,7 @@ const mainProjects = [
 
 const subProjects = [
   {
-    title: "GooHae 가구 쇼핑몰",
+    title: "GooHae 가구 쇼핑몰 ( 개인 포트폴리오용 프로젝트 )",
     category: "Sub Project",
     description: "1인 가구를 위한 가구 쇼핑몰 웹 애플리케이션입니다. 마이페이지, 장바구니 등 유저 중심의 프론트엔드와 전체 백엔드 시스템을 구현했습니다.",
     tech: ["Spring Boot", "ThymeLeaf", "JavaScript", "CSS", "MySQL", "Redis"],
@@ -134,7 +134,7 @@ const subProjects = [
     }
   },
   {
-    title: "핫딜 이커머스 시스템",
+    title: "핫딜 이커머스 시스템 ( 개인 포트폴리오용 프로젝트 )",
     category: "Sub Project",
     description: "특정 시간에 오픈되는 한정판매 시스템입니다. 대용량 트래픽 대응과 MSA 구조를 적용하여 실제 서비스 수준의 시스템을 구축했습니다.",
     tech: ["Spring Boot", "Spring WebFlux", "Spring Cloud", "Redis", "Docker", "MySQL"],
