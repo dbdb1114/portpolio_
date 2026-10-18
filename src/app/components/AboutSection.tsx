@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { User, Mail, MapPin } from "lucide-react";
+import { User, Briefcase, Mail, MapPin, Github } from "lucide-react";
 
 export function AboutSection() {
   return (
@@ -39,19 +39,18 @@ export function AboutSection() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-gray-600 mb-8 leading-relaxed"
           >
-            문제를 정의하고 코드로 해결해나가는 과정에서 강한 몰입과 성취감을 느끼며 개발을 시작했습니다.
-            백엔드 개발 경험을 바탕으로 한 견고한 시스템 설계와 프론트엔드 기술을 활용한 사용자 중심의 웹 애플리케이션 개발을 통해
-            전체 서비스의 완성도를 책임지는 웹 개발자로 성장하고 있습니다.
+            SI 백엔드(Spring Boot, MyBatis)에서 시작해, 지금은 스타트업에서{" "}
+            <strong className="text-gray-900">사내 안전관리 솔루션 백엔드(Spring Boot, JPA, MS SQL)와 React/Nuxt 프론트엔드를 함께 맡는 풀스택 개발자</strong>입니다.
             <br /><br />
-            현재도 <a
-              href="https://kht-admin-zp4y.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800 underline font-medium transition-colors"
-            >
-              한국사 학습 서비스
-            </a>와 같은 End-to-End 프로젝트를 통해 기획부터 배포까지
-            전 과정에 걸친 실무 역량을 지속적으로 발전시키고 있습니다.
+            테스트 없이 인수한 백엔드는 특성화 테스트로 현재 동작을 고정한 뒤 고칩니다.
+            프론트엔드에서는 고객사별 분기 구조를 템플릿 단위 설정으로 재설계했습니다.
+            영상통화 녹화본 누락 장애를 Linux 서버와 Docker 컨테이너 로그로 특정해 복구했습니다.
+            Jenkins 빌드 OOM은 원인부터 잡아 피크 메모리를 약 42% 줄였습니다.
+            <br /><br />
+            생성형 AI는{" "}
+            <strong className="text-gray-900">컴파일, 전체 테스트, 변경 대상별 테스트를 완료 조건으로 거는 검증 절차와 함께</strong>{" "}
+            씁니다. 백엔드와 프론트엔드를 모두 맡아 봤기 때문에{" "}
+            <strong className="text-gray-900">API 응답이 바뀌면 어느 화면이 깨지는지 알고, 그 감각으로 설계</strong>합니다.
           </motion.p>
 
           <motion.div
@@ -62,9 +61,11 @@ export function AboutSection() {
             className="space-y-3 text-gray-600"
           >
             {[
-              { icon: User, text: "웹 개발자" },
-              { icon: MapPin, text: "Seoul, Korea" },
-              { icon: Mail, text: "dbdb1114@naver.com" }
+              { icon: User, text: "풀스택 개발자" },
+              { icon: Briefcase, text: "주식회사 와트 재직 중" },
+              { icon: MapPin, text: "경기도 성남시" },
+              { icon: Mail, text: "dbdb1114@naver.com", href: "mailto:dbdb1114@naver.com" },
+              { icon: Github, text: "github.com/dbdb1114", href: "https://github.com/dbdb1114" }
             ].map((item, index) => (
               <motion.div
                 key={item.text}
@@ -75,7 +76,18 @@ export function AboutSection() {
                 className="flex items-center gap-3"
               >
                 <item.icon className="w-5 h-5 text-gray-400" />
-                <span>{item.text}</span>
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-gray-900 underline-offset-4 hover:underline transition-colors"
+                  >
+                    {item.text}
+                  </a>
+                ) : (
+                  <span>{item.text}</span>
+                )}
               </motion.div>
             ))}
           </motion.div>

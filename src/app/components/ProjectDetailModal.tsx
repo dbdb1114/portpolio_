@@ -1,19 +1,20 @@
 import { motion, AnimatePresence } from "motion/react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface ProjectDetail {
   title: string;
+  company: string;
   description: string;
   period: string;
-  team: string;
+  team?: string;
   role: string;
   images: string[];
-  responsibilities: {
-    frontend?: string[];
-    backend?: string[];
-  };
-  techStack: string[];
+  tasks: {
+    title: string;
+    items: string[];
+  }[];
+  tech: string[];
   link?: string;
 }
 
@@ -25,6 +26,10 @@ interface ProjectDetailModalProps {
 
 export function ProjectDetailModal({ isOpen, onClose, project }: ProjectDetailModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    setCurrentImageIndex(0);
+  }, [project]);
 
   if (!project) return null;
 
@@ -72,58 +77,61 @@ export function ProjectDetailModal({ isOpen, onClose, project }: ProjectDetailMo
               </button>
 
               {/* Image Slider */}
-              <div className="relative bg-gray-100 h-[400px]">
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={currentImageIndex}
-                    src={project.images[currentImageIndex]}
-                    alt={`${project.title} - ${currentImageIndex + 1}`}
-                    initial={{ opacity: 0, x: 100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -100 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full h-full object-cover"
-                  />
-                </AnimatePresence>
+              {project.images.length > 0 && (
+                <div className="relative bg-gray-100 h-[400px]">
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={currentImageIndex}
+                      src={project.images[currentImageIndex]}
+                      alt={`${project.title} - ${currentImageIndex + 1}`}
+                      initial={{ opacity: 0, x: 100 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -100 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-full h-full object-cover"
+                    />
+                  </AnimatePresence>
 
-                {/* Navigation Arrows */}
-                {project.images.length > 1 && (
-                  <>
-                    <button
-                      onClick={prevImage}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-colors"
-                    >
-                      <ChevronLeft className="w-6 h-6 text-gray-700" />
-                    </button>
-                    <button
-                      onClick={nextImage}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-colors"
-                    >
-                      <ChevronRight className="w-6 h-6 text-gray-700" />
-                    </button>
+                  {/* Navigation Arrows */}
+                  {project.images.length > 1 && (
+                    <>
+                      <button
+                        onClick={prevImage}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-colors"
+                      >
+                        <ChevronLeft className="w-6 h-6 text-gray-700" />
+                      </button>
+                      <button
+                        onClick={nextImage}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-colors"
+                      >
+                        <ChevronRight className="w-6 h-6 text-gray-700" />
+                      </button>
 
-                    {/* Image Indicators */}
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                      {project.images.map((_, index) => (
-                        <button
-                          key={index}
-                          onClick={() => setCurrentImageIndex(index)}
-                          className={`w-2 h-2 rounded-full transition-all ${
-                            index === currentImageIndex
-                              ? "bg-white w-6"
-                              : "bg-white/50 hover:bg-white/75"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </>
-                )}
-              </div>
+                      {/* Image Indicators */}
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                        {project.images.map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setCurrentImageIndex(index)}
+                            className={`w-2 h-2 rounded-full transition-all ${
+                              index === currentImageIndex
+                                ? "bg-white w-6"
+                                : "bg-white/50 hover:bg-white/75"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </div>
+              )}
 
               {/* Content */}
               <div className="p-8">
                 {/* Header */}
-                <div className="mb-6">
+                <div className="mb-6 pr-12">
+                  <div className="text-sm text-gray-500 mb-2">{project.company}</div>
                   <h2 className="text-3xl font-bold text-gray-900 mb-3">
                     {project.title}
                   </h2>
@@ -134,9 +142,11 @@ export function ProjectDetailModal({ isOpen, onClose, project }: ProjectDetailMo
                     <div>
                       <span className="font-semibold text-gray-700">기간:</span> {project.period}
                     </div>
-                    <div>
-                      <span className="font-semibold text-gray-700">팀 구성:</span> {project.team}
-                    </div>
+                    {project.team && (
+                      <div>
+                        <span className="font-semibold text-gray-700">팀 구성:</span> {project.team}
+                      </div>
+                    )}
                     <div>
                       <span className="font-semibold text-gray-700">역할:</span> {project.role}
                     </div>
@@ -147,7 +157,7 @@ export function ProjectDetailModal({ isOpen, onClose, project }: ProjectDetailMo
                 <div className="mb-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">기술 스택</h3>
                   <div className="flex flex-wrap gap-2">
-                    {(project as any).tech?.map((tech: string) => (
+                    {project.tech.map((tech) => (
                       <span
                         key={tech}
                         className="px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium"
@@ -158,43 +168,26 @@ export function ProjectDetailModal({ isOpen, onClose, project }: ProjectDetailMo
                   </div>
                 </div>
 
-                {/* Responsibilities */}
+                {/* Tasks */}
                 <div className="space-y-6">
                   <h3 className="text-lg font-semibold text-gray-900">주요 업무</h3>
-                  
-                  {project.responsibilities.frontend && (
-                    <div>
+
+                  {project.tasks.map((task) => (
+                    <div key={task.title}>
                       <h4 className="text-md font-semibold text-gray-800 mb-3 flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
-                        Frontend
+                        {task.title}
                       </h4>
                       <ul className="space-y-2 ml-4">
-                        {project.responsibilities.frontend.map((item, index) => (
+                        {task.items.map((item, index) => (
                           <li key={index} className="text-gray-600 leading-relaxed flex gap-2">
-                            <span className="text-gray-400 mt-1.5">•</span>
+                            <span className="text-gray-400">•</span>
                             <span>{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
-                  )}
-
-                  {project.responsibilities.backend && (
-                    <div>
-                      <h4 className="text-md font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                        Backend
-                      </h4>
-                      <ul className="space-y-2 ml-4">
-                        {project.responsibilities.backend.map((item, index) => (
-                          <li key={index} className="text-gray-600 leading-relaxed flex gap-2">
-                            <span className="text-gray-400 mt-1.5">•</span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                  ))}
                 </div>
 
                 {/* Link */}

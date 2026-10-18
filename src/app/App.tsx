@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Navigation } from "./components/Navigation";
 import { AboutSection } from "./components/AboutSection";
+import { ExperienceSection } from "./components/ExperienceSection";
 import { ProjectSection } from "./components/ProjectSection";
+import { EducationSection } from "./components/EducationSection";
 
 export default function App() {
   const [currentSection, setCurrentSection] = useState(0);
@@ -44,7 +46,15 @@ export default function App() {
       </div>
 
       <div ref={(el) => el && (sectionsRef.current[1] = el)}>
+        <ExperienceSection />
+      </div>
+
+      <div ref={(el) => el && (sectionsRef.current[2] = el)}>
         <ProjectSection />
+      </div>
+
+      <div ref={(el) => el && (sectionsRef.current[3] = el)}>
+        <EducationSection />
       </div>
     </div>
   );
